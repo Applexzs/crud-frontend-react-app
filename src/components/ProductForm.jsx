@@ -6,12 +6,21 @@ const initialDataForm = {
     price: '' 
 }
 
-export const ProductForm = () => {
+export const ProductForm = ({handlerAdd}) => {
     const [form, setForm] = useState(initialDataForm);
 
     const {name, description, price} = form;
     return(
-        <form action="">
+        <form onSubmit={(event) => {
+            event.preventDefault();
+            if(!name || !description || !price){
+                alert("Debe de completar los datos del formulario");
+                return;
+            }
+            // console.log(form);
+            handlerAdd(form);
+            setForm(initialDataForm);
+        }}>
             <div>
                 <input type="text" placeholder="Name" style={{marginBottom: "4px"}} name="name" value={name} onChange={(event) => setForm({
                     ...form, name: event.target.value
