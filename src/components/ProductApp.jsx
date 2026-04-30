@@ -34,9 +34,9 @@ export const ProductApp = ({ title }) => {
     }
   };
 
-  const handlerRemoveProduct = (name) => {
-    console.log(name);
-    setProducts(products.filter((product) => product.name != name));
+  const handlerRemoveProduct = (id) => {
+    console.log(id);
+    setProducts(products.filter((product) => product.id != id));
   };
 
   const handlerProductSelected = (product) => {
@@ -44,21 +44,25 @@ export const ProductApp = ({ title }) => {
   };
 
   return (
-    <div>
-      <h1>{title}</h1>
-      <div>
-        <div>
+    <div className="container my-4">
+      <h2>{title}</h2>
+      <div className="row">
+        <div className="col">
           <ProductForm
             handlerAdd={handlerAddProduct}
             productSelected={productSelected}
           />
         </div>
-        <div>
-          <ProductGrid
+        <div className="col">
+            {
+                products.length > 0 ? <ProductGrid
             products={products}
             handlerRemove={handlerRemoveProduct}
             handlerProductSelected={handlerProductSelected}
           />
+          : <div className="alert alert-warning">No hay productos en el sistema </div>
+            }
+          
         </div>
       </div>
     </div>
