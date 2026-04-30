@@ -1,10 +1,13 @@
 import PropTypes from "prop-types"
-export const ProductDetail = ({handlerRemove, product = {}}) => {
+export const ProductDetail = ({handlerProductSelected, handlerRemove, product = {}}) => {
     return(
         <tr>
                             <td>{product.name}</td>
                             <td>{product.description}</td>
                             <td>{product.price}</td>
+                            <td>
+                                <button onClick={() => handlerProductSelected(product)}>Update</button>
+                            </td>
                             <td>
                                 <button onClick={() => handlerRemove(product.name)}>Remove</button>
                             </td>
@@ -14,5 +17,6 @@ export const ProductDetail = ({handlerRemove, product = {}}) => {
 
 ProductDetail.propTypes = {
     products: PropTypes.array.isRequired,
-    handlerRemove: PropTypes.func.isRequired
+    handlerRemove: PropTypes.func.isRequired,
+    handlerProductSelected: PropTypes.func.isRequired
 }
