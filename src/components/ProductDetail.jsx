@@ -9,7 +9,7 @@ export const ProductDetail = ({handlerProductSelected, handlerRemove, product = 
                                 <button className="btn btn-secondary bt-sm" onClick={() => handlerProductSelected(product)}>Update</button>
                             </td>
                             <td>
-                                <button className="btn btn-danger bt-sm" onClick={() => handlerRemove(product.name)}>Remove</button>
+                                <button className="btn btn-danger bt-sm" onClick={() => handlerRemove(product.id)}>Remove</button>
                             </td>
                         </tr>
     )
